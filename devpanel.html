@@ -2,18 +2,41 @@
 <html>
   <head>
     <title>Talk - Devpanel</title>
+    <style>
+      body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 16px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        color: #4A4A4A;
+      }
+
+      .headline {
+        color:#f67150;
+      }
+
+      a {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: none;
+        border-bottom: 2px dotted #f67150;
+        color: #4A4A4A;
+      }
+    </style>
   </head>
   <body>
-  <h2>Talk Devtools</h2>
+  <h2 class="headline">Talk Devtools</h2>
   <ul>
     <li>
       Enable Debug Plugins 
       <input id="debug" type="checkbox"/>
     </li>
   </ul>
-  <a href="http://www.coralproject.net" target="_blank">
-    CoralProject.net
-  </a>
+  
+    The Coral Project - 
+    <a href="http://www.coralproject.net" target="_blank">
+      www.coralproject.net
+    </a> - <a href="https://github.com/coralproject/talk/blob/master/LICENSE" target="_blank">Apache License, v2.0.</a>
 
   <!-- Scripts -->
   <script src="panel.js"></script>
