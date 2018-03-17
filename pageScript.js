@@ -14,8 +14,9 @@ function disableEventLogging() {
 	window.TalkEmbed.off('**', logger);
 }
 
-function logger(content) {
-	console.log(content);
+function logger(value) {
+	console.log(`%cTalk-Devtools %c${this.event}`, 'color: red', 'color: green');
+	console.log(value);
 }
 
 var events = [
@@ -38,5 +39,5 @@ var events = [
 ];
 
 events.map((evt) => {
-	window.addEventListener(evt.name, evt.fn);
+	window.addEventListener(evt.name, evt.fn, false);
 });
