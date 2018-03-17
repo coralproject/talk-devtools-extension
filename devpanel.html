@@ -22,16 +22,29 @@
         border-bottom: 2px dotted #f67150;
         color: #4A4A4A;
       }
+      
+      .logbox-container {
+        border: solid 1px #e2e2e2;
+      }
+
     </style>
   </head>
   <body>
   <h2 class="headline">Talk Devtools</h2>
   <ul>
     <li>
-      Enable Debug Plugins 
-      <input id="debug" type="checkbox"/>
+      Enable Debug Plugins <input id="pluginsDebug" type="checkbox"/>
+    </li>
+    <li>
+      Enable Event Logging <input id="eventLogging" type="checkbox"/>
     </li>
   </ul>
+  
+  <div class="logbox-container" >
+    <pre id="logbox">
+
+    </pre>
+  </div>
   
     The Coral Project - 
     <a href="http://www.coralproject.net" target="_blank">

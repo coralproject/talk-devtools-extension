@@ -1,22 +1,42 @@
-window.addEventListener(
-	'ENABLE_DEBUG_MODE',
-	function ENABLE_DEBUG_MODE(event) {
-		window.TalkEmbed.dispatch('ENABLE_PLUGINS_DEBUG');
-	},
-	false
-);
+function enableDebugMode() {
+	window.TalkEmbed.dispatch('ENABLE_PLUGINS_DEBUG');
+}
 
-window.addEventListener(
-	'DISABLE_DEBUG_MODE',
-	function ENABLE_DEBUG_MODE(event) {
-		window.TalkEmbed.dispatch('DISABLE_PLUGINS_DEBUG');
-	},
-	false
-);
+function disableDebugMode() {
+	window.TalkEmbed.dispatch('DISABLE_PLUGINS_DEBUG');
+}
 
-window.TalkEmbed.on('**', function(value) {
-	// We wait until the embed is ready
-	if (this.event === 'query.CoralEmbedStream_Embed.ready') {
-		window.postMessage({ event: this.event, value: value }, '*');
-	}
+function enableEventLogging() {
+	window.TalkEmbed.on('**', logger);
+}
+
+function disableEventLogging() {
+	window.TalkEmbed.off('**', logger);
+}
+
+function logger(content) {
+	console.log(content);
+}
+
+var events = [
+	{
+		name: 'ENABLE_DEBUG_MODE',
+		fn: enableDebugMode,
+	},
+	{
+		name: 'DISABLE_DEBUG_MODE',
+		fn: disableDebugMode,
+	},
+	{
+		name: 'ENABLE_EVENT_LOGGING',
+		fn: enableEventLogging,
+	},
+	{
+		name: 'DISABLE_EVENT_LOGGING',
+		fn: disableEventLogging,
+	},
+];
+
+events.map((evt) => {
+	window.addEventListener(evt.name, evt.fn);
 });

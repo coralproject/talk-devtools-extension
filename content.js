@@ -2,35 +2,38 @@
 let contentPort = chrome.runtime.connect({
 	name: 'background-content',
 });
-
 // Appending pageScript to interact with the DOM
 var s = document.createElement('script');
 s.src = chrome.extension.getURL('pageScript.js');
 document.body.appendChild(s);
 
 // Listen for runtime message
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-	if (message.action === 'ENABLE_DEBUG_MODE') {
-		let event = new CustomEvent('ENABLE_DEBUG_MODE');
-		window.dispatchEvent(event);
-	}
+const actions = [
+	'ENABLE_DEBUG_MODE',
+	'DISABLE_DEBUG_MODE',
+	'ENABLE_EVENT_LOGGING',
+	'DISABLE_EVENT_LOGGING',
+];
 
-	if (message.action === 'DISABLE_DEBUG_MODE') {
-		let event = new CustomEvent('DISABLE_DEBUG_MODE');
+// Escucha las acciones que tira panel
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+	console.log(message);
+	if (actions.includes(message.action)) {
+		// Let's fire an allowed action
+		let event = new CustomEvent(message.action);
+		// Lo lee page script
 		window.dispatchEvent(event);
 	}
 });
 
 window.addEventListener(
 	'message',
-	function receiveDuck(event) {
-		if (event.data.action === 'GOT_DUCK') {
-			// debugger;
-			//Remove this listener, but you can keep it depend on your case
-			// window.removeEventListener('message', receiveDuck, false);
+	function(event) {
+		if (event.data.action === 'TALK_EVENT') {
 			contentPort.postMessage({
-				type: 'ahreeeee',
-				payload: event.data.payload,
+				type: 'TALK_EVENT',
+				event: event.data.event,
+				value: event.data.value,
 			});
 		}
 	},
