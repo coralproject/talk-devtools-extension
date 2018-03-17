@@ -15,7 +15,11 @@ function disableEventLogging() {
 }
 
 function logger(value) {
-	console.log(`%cTalk-Devtools %c${this.event}`, 'color: red', 'color: green');
+	console.log(
+		`%cTalk-Devtools %c${this.event}`,
+		'color: coral',
+		'color: #5a0e9c'
+	);
 	console.log(value);
 }
 
