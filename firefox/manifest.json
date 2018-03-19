@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Talk Devtools",
+  "description": "This extension allows the developers to interact and debug Talk",
+  "version": "1.0",
+  "devtools_page": "window/devtools.html",
+  "browser_action": {
+    "default_icon": "assets/icon.png",
+    "default_title": "Talk Devtool",
+    "default_popup": "window/popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": [
+      "libs/browser-polyfill.js",
+      "inject/contentScript.js"
+    ]
+  }],
+  "web_accessible_resources": ["inject/pageScript.js"],
+  "permissions": ["tabs", "<all_urls>", "activeTab"],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+}

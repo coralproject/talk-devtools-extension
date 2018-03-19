@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Talk - Devpanel</title>
+    <style>
+      body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 16px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        color: #4A4A4A;
+      }
+
+      .headline {
+        color:#f67150;
+      }
+
+      a {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: none;
+        border-bottom: 2px dotted #f67150;
+        color: #4A4A4A;
+      }
+
+    </style>
+  </head>
+  <body>
+  <h2 class="headline">Talk Devtools</h2>
+  <ul>
+    <li>
+      Enable Debug Plugins <input id="pluginsDebug" type="checkbox"/>
+    </li>
+    <li>
+      Enable Event Logging <input id="eventLogging" type="checkbox"/>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a href="http://localhost:3000/api/v1/graph/iql" target="_blank">Go to graph</a> - <small> Check your graphql code agains the server with Graphiql</small>
+    </li>
+    <li>
+      <a id="createNewAssetLink">Create a new asset</a>
+    </li>
+    <li>
+      <a href="https://docs.coralproject.net/" target="_blank">Read the docs</a>
+    </li>
+    <li>
+      <a href="https://github.com/coralproject/talk" target="_blank">Talk Github Repository</a> - <small></small>
+    </li>
+  </ul>
+  
+    The Coral Project - 
+    <a href="http://www.coralproject.net" target="_blank">
+      www.coralproject.net
+    </a> - <a href="https://github.com/coralproject/talk/blob/master/LICENSE" target="_blank">Apache License, v2.0.</a>
+
+  <!-- Scripts -->
+  <script type="application/javascript" src="../libs/browser-polyfill.js"></script>
+  <script src="../devpanel/index.js"></script>
+  </body>
+</html>
