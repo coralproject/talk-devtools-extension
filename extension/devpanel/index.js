@@ -1,12 +1,12 @@
-var tabId = browser.devtools.inspectedWindow.tabId;
+var tabId = chrome.devtools.inspectedWindow.tabId;
 var $pluginsDebug = document.getElementById('pluginsDebug');
 
 $pluginsDebug.addEventListener('change', function() {
   var action = $pluginsDebug.checked
-    ? 'ENABLE_DEBUG_MODE'
-    : 'DISABLE_DEBUG_MODE';
+    ? 'ENABLE_PLUGINS_DEBUG'
+    : 'DISABLE_PLUGINS_DEBUG';
 
-  browser.tabs.sendMessage(tabId, { action });
+  chrome.tabs.sendMessage(tabId, { action });
 });
 
 var $eventLogging = document.getElementById('eventLogging');
@@ -16,7 +16,7 @@ $eventLogging.addEventListener('change', function() {
     ? 'ENABLE_EVENT_LOGGING'
     : 'DISABLE_EVENT_LOGGING';
 
-  browser.tabs.sendMessage(tabId, { action });
+  chrome.tabs.sendMessage(tabId, { action });
 });
 
 function generateNewAsset() {

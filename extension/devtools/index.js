@@ -1,6 +1,6 @@
 chrome.devtools.panels.create(
   'Talk',
   'icon.png',
-  'window/devpanel.html',
+  '/window/devpanel.html',
   function() {}
 );

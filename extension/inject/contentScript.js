@@ -10,8 +10,8 @@ document.body.appendChild(s);
 
 // Listen for runtime messages
 const actions = [
-  'ENABLE_DEBUG_MODE',
-  'DISABLE_DEBUG_MODE',
+  'ENABLE_PLUGINS_DEBUG',
+  'DISABLE_PLUGINS_DEBUG',
   'ENABLE_EVENT_LOGGING',
   'DISABLE_EVENT_LOGGING',
 ];
